@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiempos — тренажёр испанских времён · Spanish Verb Tenses Trainer</title>
+<meta name="description" content="Master Spanish verb tenses: a short clear rule, then drills on the 1,000 most-used verbs. iPhone app, $2.99 once, no subscription, works offline. Тренажёр испанских глаголов для iPhone.">
+<meta property="og:title" content="Tiempos — Spanish verb tenses trainer for iPhone">
+<meta property="og:description" content="Rule first. Then a hundred reps. 1,000 most-used verbs, 5 tenses, 29 irregular patterns. $2.99 once, offline, no ads.">
+<meta property="og:url" content="https://tiempos.elen.red/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%235E8153'/><text x='50' y='72' font-size='64' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' fill='%23F6F1E7'>é</text></svg>">
+</head>
+<body>
+<style>
+  :root {
+    --bg: #F6F1E7;
+    --bg-soft: #EFE8D8;
+    --card: #FFFFFF;
+    --ink: #2B2721;
+    --ink-soft: #7d7466;
+    --sage: #5E8153;
+    --sage-deep: #46633e;
+    --sage-soft: #E9F0E2;
+    --line: #E3DAC8;
+    --chip: #EDE7DA;
+    --amber-soft: #F6EED8;
+    --shadow: 0 24px 60px -24px rgba(58, 52, 39, 0.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #211E18; --bg-soft: #2A2620; --card: #2E2A22; --ink: #F0EADC;
+      --ink-soft: #A89F8D; --sage: #93B285; --sage-deep: #A8C39A; --sage-soft: #37402f;
+      --line: #3C372D; --chip: #38332A; --amber-soft: #3d3626;
+      --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F1E7; --bg-soft: #EFE8D8; --card: #FFFFFF; --ink: #2B2721;
+    --ink-soft: #7d7466; --sage: #5E8153; --sage-deep: #46633e; --sage-soft: #E9F0E2;
+    --line: #E3DAC8; --chip: #EDE7DA; --amber-soft: #F6EED8;
+    --shadow: 0 24px 60px -24px rgba(58, 52, 39, 0.35);
+  }
+  :root[data-theme="dark"] {
+    --bg: #211E18; --bg-soft: #2A2620; --card: #2E2A22; --ink: #F0EADC;
+    --ink-soft: #A89F8D; --sage: #93B285; --sage-deep: #A8C39A; --sage-soft: #37402f;
+    --line: #3C372D; --chip: #38332A; --amber-soft: #3d3626;
+    --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── nav ── */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 19px; letter-spacing: -0.2px; }
+  .logo-mark {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(180deg, #F8F4EB, #EFE8D8);
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-family: Georgia, serif; font-weight: 700; font-size: 24px; color: #5E8153;
+  }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .lang-switch { display: flex; background: var(--chip); border-radius: 999px; padding: 3px; }
+  .lang-switch button {
+    border: 0; background: none; font-family: inherit; cursor: pointer;
+    font-size: 13px; font-weight: 700; color: var(--ink-soft);
+    padding: 7px 14px; border-radius: 999px; transition: background 0.15s, color 0.15s;
+  }
+  .lang-switch button.on { background: var(--card); color: var(--sage); box-shadow: 0 2px 6px rgba(58,52,39,0.15); }
+  .nav-cta {
+    background: var(--ink); color: var(--bg); text-decoration: none;
+    padding: 10px 20px; border-radius: 999px; font-size: 15px; font-weight: 600;
+    transition: transform 0.15s ease; white-space: nowrap;
+  }
+  .nav-cta:hover { transform: scale(1.04); }
+
+  /* ── hero ── */
+  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 56px 0 40px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 20px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--sage); }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(44px, 6.2vw, 76px);
+    line-height: 1.02; letter-spacing: -1.5px; font-weight: 700;
+    margin: 0 0 24px; text-wrap: balance;
+  }
+  h1 .accent { color: var(--sage); font-style: italic; white-space: nowrap; }
+  .hero-sub { font-size: 19px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 32px; }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+  .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .store-badge {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--ink); color: var(--bg); text-decoration: none;
+    padding: 13px 26px; border-radius: 14px;
+    transition: transform 0.15s ease;
+    box-shadow: 0 10px 24px -12px rgba(43, 39, 33, 0.5);
+  }
+  .store-badge:hover { transform: translateY(-2px); }
+  .store-badge svg { width: 26px; height: 26px; flex: none; }
+  .store-badge .lines { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+  .store-badge .small { font-size: 11px; opacity: 0.75; }
+  .store-badge .big { font-size: 18px; font-weight: 600; letter-spacing: -0.2px; }
+  .price-note { font-size: 15px; color: var(--ink-soft); }
+  .price-note b { color: var(--ink); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero > .hero-copy > *, .phone-col { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+    .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-copy > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero-copy > *:nth-child(3) { animation-delay: 0.28s; }
+    .hero-copy > *:nth-child(4) { animation-delay: 0.4s; }
+    .phone-col { animation-delay: 0.3s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+
+  /* ── phone demo ── */
+  .phone-col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .phone {
+    width: 340px; border-radius: 52px; padding: 14px;
+    background: linear-gradient(180deg, #3a352c, #221f19);
+    box-shadow: var(--shadow);
+  }
+  .screen {
+    background: #F6F1E7; border-radius: 40px; overflow: hidden;
+    padding: 18px 16px 22px; position: relative; color: #2B2721;
+  }
+  .island { width: 96px; height: 26px; background: #17150f; border-radius: 999px; margin: 0 auto 14px; }
+  .demo-title { text-align: center; font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+  .demo-tabs { display: flex; background: #EDE7DA; border-radius: 11px; padding: 3px; margin-bottom: 14px; }
+  .demo-tab {
+    flex: 1; border: 0; background: none; padding: 8px 0; border-radius: 9px;
+    font-size: 13px; font-weight: 600; color: #7d7466; cursor: pointer; font-family: inherit;
+  }
+  .demo-tab.on { background: #fff; color: #2B2721; box-shadow: 0 2px 6px rgba(58,52,39,0.14); }
+  .demo-card { background: #fff; border-radius: 18px; padding: 18px 16px; box-shadow: 0 8px 20px -12px rgba(58,52,39,0.25); }
+  .demo-marker {
+    display: table; margin: 0 auto 10px; background: #E9F0E2; color: #46633e;
+    border-radius: 999px; padding: 4px 13px; font-size: 12.5px; font-style: italic; font-weight: 600;
+  }
+  .demo-verb { text-align: center; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+  .demo-tr { text-align: center; font-size: 12.5px; color: #7d7466; margin-bottom: 6px; }
+  .demo-pron { display: table; margin: 0 auto 12px; background: #EDE7DA; border-radius: 999px; padding: 5px 15px; font-size: 14px; }
+  .demo-input {
+    width: 100%; border: 1.5px solid #E3DAC8; border-radius: 12px; background: #F6F1E7;
+    font-size: 17px; text-align: center; padding: 11px 10px; color: #2B2721;
+    font-family: inherit; outline: none; transition: border-color 0.15s, background 0.15s;
+  }
+  .demo-input:focus { border-color: #5E8153; }
+  .demo-input.ok { border-color: #3E7A48; background: #E4F0E1; }
+  .demo-input.bad { border-color: #B0574A; background: #F6E3DE; }
+  .demo-accents { display: flex; gap: 6px; margin: 10px 0; }
+  .demo-accents button {
+    flex: 1; border: 1px solid #E3DAC8; background: #fff; border-radius: 9px;
+    font-size: 16px; padding: 7px 0; cursor: pointer; color: #2B2721; font-family: inherit;
+    transition: background 0.12s;
+  }
+  .demo-accents button:hover { background: #E9F0E2; }
+  .demo-check {
+    width: 100%; border: 0; border-radius: 12px; padding: 13px 0; font-size: 15px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    background: #5E8153; color: #fff; transition: background 0.15s;
+  }
+  .demo-check:disabled { background: #EDE7DA; color: #a89f8d; cursor: default; }
+  .demo-feedback { min-height: 40px; margin-top: 10px; font-size: 13.5px; line-height: 1.45; text-align: center; }
+  .demo-feedback .good { color: #3E7A48; font-weight: 700; }
+  .demo-feedback .bad-t { color: #B0574A; font-weight: 700; }
+  .demo-feedback .example { font-style: italic; color: #5a5348; }
+  .demo-streak { text-align: right; font-size: 12px; color: #7d7466; margin-top: 8px; }
+  .try-hint { font-size: 14px; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+  .try-hint::before { content: "↑"; color: var(--sage); font-weight: 700; }
+
+  /* ── endings marquee ── */
+  .marquee {
+    overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 14px 0; margin: 30px 0 0; white-space: nowrap;
+  }
+  .marquee-track { display: inline-block; animation: slide 38s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+  .marquee span {
+    font-family: Georgia, serif; font-style: italic; font-size: 22px;
+    color: var(--ink-soft); margin: 0 26px;
+  }
+  .marquee span:nth-child(3n) { color: var(--sage); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ── sections ── */
+  section { padding: 72px 0 12px; }
+  .sec-label {
+    font-size: 13px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 12px;
+  }
+  h2 {
+    font-family: Georgia, serif; font-size: clamp(30px, 4vw, 44px);
+    letter-spacing: -0.8px; line-height: 1.1; margin: 0 0 14px; text-wrap: balance;
+  }
+  .sec-sub { color: var(--ink-soft); max-width: 60ch; margin: 0 0 40px; }
+
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .cell {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 28px; position: relative; overflow: hidden;
+  }
+  .cell h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -0.3px; }
+  .cell p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+  .cell-big { grid-column: span 3; }
+  .cell-mid { grid-column: span 2; }
+  .cell-sm { grid-column: span 2; }
+  .huge {
+    font-family: Georgia, serif; font-size: 84px; font-weight: 700; line-height: 1;
+    color: var(--sage); letter-spacing: -3px; margin-bottom: 6px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    background: var(--sage-soft); color: var(--sage-deep); border-radius: 999px;
+    font-size: 13.5px; font-weight: 600; padding: 6px 13px;
+  }
+  .chip b { font-weight: 800; }
+  .flow { display: flex; align-items: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .flow .step { background: var(--chip); border-radius: 10px; padding: 8px 14px; font-size: 14px; font-weight: 600; }
+  .flow .arr { color: var(--sage); font-weight: 700; }
+  .example-line {
+    margin-top: 16px; background: var(--amber-soft); border-radius: 12px; padding: 14px 16px;
+    font-size: 15px;
+  }
+  .example-line i { font-family: Georgia, serif; font-size: 16.5px; }
+  .example-line b { color: var(--sage-deep); }
+
+  .tenses { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .tense {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 18px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .tense:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .tense .t-name { font-weight: 700; font-size: 15.5px; letter-spacing: -0.2px; margin-bottom: 2px; }
+  .tense .t-desc { font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; }
+  .tense .t-forms { font-family: Georgia, serif; font-style: italic; font-size: 14.5px; color: var(--sage-deep); line-height: 1.7; }
+
+  .final {
+    margin: 80px 0; background: var(--ink); color: var(--bg); border-radius: 28px;
+    padding: 64px 48px; text-align: center; position: relative; overflow: hidden;
+  }
+  .final h2 { color: inherit; }
+  .final .accent-big {
+    position: absolute; font-family: Georgia, serif; font-style: italic; font-weight: 700;
+    color: var(--sage); opacity: 0.16; pointer-events: none; user-select: none;
+  }
+  .final .a1 { font-size: 340px; top: -120px; left: -40px; }
+  .final .a2 { font-size: 260px; bottom: -130px; right: -10px; }
+  .final p { color: color-mix(in srgb, var(--bg) 75%, transparent); max-width: 52ch; margin: 0 auto 32px; }
+  .final .store-badge { background: var(--bg); color: var(--ink); box-shadow: none; }
+  .final .under { margin-top: 18px; font-size: 14px; opacity: 0.7; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 28px 0 44px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    font-size: 14px; color: var(--ink-soft);
+  }
+  footer a { color: var(--sage); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 32px; }
+    .phone-col { order: 2; }
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .cell-big, .cell-mid, .cell-sm { grid-column: span 2; }
+    .tenses { grid-template-columns: repeat(2, 1fr); }
+    .final { padding: 48px 24px; }
+  }
+  @media (max-width: 520px) {
+    .tenses { grid-template-columns: 1fr; }
+    .phone { width: 100%; max-width: 340px; }
+    .nav-cta { display: none; }
+  }
+</style>
+
+<div class="wrap">
+  <nav>
+    <div class="logo"><div class="logo-mark">é</div> Tiempos</div>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button id="lang-ru" type="button">RU</button>
+        <button id="lang-en" type="button">EN</button>
+      </div>
+      <a class="nav-cta" href="#get" data-i18n="navCta">Get the app</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow" data-i18n="eyebrow">Spanish verb trainer for iPhone</div>
+      <h1>Hablas. Hablaste. <span class="accent">Hablarás.</span></h1>
+      <p class="hero-sub" data-i18n-html="heroSub"></p>
+      <div class="cta-row">
+        <a id="get" class="store-badge" href="#" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.79.06 2.26-.8 3.81-.68 1.3.11 2.28.59 2.98 1.51-2.67 1.63-2.24 5.19.34 6.32-.53 1.66-1.24 3.29-2.21 5.02zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <span class="lines"><span class="small" data-i18n="badgeSmall">Download on the</span><span class="big">App Store</span></span>
+        </a>
+        <div class="price-note" data-i18n-html="priceNote"></div>
+      </div>
+    </div>
+
+    <div class="phone-col">
+      <div class="phone" role="group" aria-label="Interactive demo">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="demo-title">Presente de Indicativo</div>
+          <div class="demo-tabs">
+            <button class="demo-tab on" data-mode="regular" id="tab-regular">By the rule</button>
+            <button class="demo-tab" data-mode="irregular" id="tab-irregular">Irregular</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-marker" id="demo-marker">cada día</div>
+            <div class="demo-verb" id="demo-verb">hablar</div>
+            <div class="demo-tr" id="demo-tr">to speak</div>
+            <div class="demo-pron" id="demo-pron">yo</div>
+            <input class="demo-input" id="demo-input" placeholder="Type the verb form…" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <div class="demo-accents" id="demo-accents">
+              <button type="button">á</button><button type="button">é</button><button type="button">í</button><button type="button">ó</button><button type="button">ú</button><button type="button">ñ</button>
+            </div>
+            <button class="demo-check" id="demo-check" disabled>Check</button>
+            <div class="demo-feedback" id="demo-feedback"></div>
+            <div class="demo-streak" id="demo-streak">🔥 0</div>
+          </div>
+        </div>
+      </div>
+      <div class="try-hint" data-i18n="tryHint">This is the real thing — try a verb</div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">
+    <span>-é</span><span>-aste</span><span>-ó</span><span>-amos</span><span>-asteis</span><span>-aron</span><span>hablo</span><span>comes</span><span>vive</span><span>-ía</span><span>-ías</span><span>-íamos</span><span>tuve</span><span>hice</span><span>fui</span><span>-aré</span><span>-ás</span><span>-án</span><span>he hablado</span><span>-ado</span><span>-ido</span><span>pienso</span><span>puedo</span><span>pido</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="sec-label" data-i18n="sec1Label">Why it works</div>
+    <h2 data-i18n="sec1H">Rule first. Then a hundred reps.</h2>
+    <p class="sec-sub" data-i18n="sec1Sub"></p>
+
+    <div class="bento">
+      <div class="cell cell-big">
+        <div class="huge">1,000</div>
+        <h3 data-i18n="b1H">Most-used Spanish verbs</h3>
+        <p data-i18n="b1P"></p>
+      </div>
+      <div class="cell cell-big">
+        <div class="huge">29</div>
+        <h3 data-i18n="b2H">Irregular-verb patterns</h3>
+        <p data-i18n="b2P"></p>
+        <div class="chips">
+          <span class="chip">e → <b>ie</b> · pienso</span>
+          <span class="chip">o → <b>ue</b> · vuelvo</span>
+          <span class="chip">yo → <b>-go</b> · tengo</span>
+          <span class="chip">c → <b>zc</b> · conozco</span>
+          <span class="chip" data-i18n="chipStrong">strong preterite · tuve</span>
+        </div>
+      </div>
+      <div class="cell cell-mid">
+        <h3 data-i18n="b3H">Time markers teach timing</h3>
+        <p data-i18n-html="b3P"></p>
+        <div class="flow"><span class="step">ayer</span><span class="arr">→</span><span class="step">Indefinido</span><span class="arr">→</span><span class="step">hablé</span></div>
+      </div>
+      <div class="cell cell-mid">
+        <h3 data-i18n="b4H">Every answer becomes a sentence</h3>
+        <p data-i18n="b4P"></p>
+        <div class="example-line"><i>«Anoche <b>compraste</b> pan.»</i></div>
+      </div>
+      <div class="cell cell-mid">
+        <h3 data-i18n="b5H">Accent-aware checking</h3>
+        <p data-i18n-html="b5P"></p>
+      </div>
+      <div class="cell cell-sm">
+        <h3 data-i18n="b6H">Yours, fully</h3>
+        <p data-i18n="b6P"></p>
+      </div>
+      <div class="cell cell-sm">
+        <h3>Русский / English</h3>
+        <p data-i18n="b7P"></p>
+      </div>
+      <div class="cell cell-sm">
+        <h3 data-i18n="b8H">Hide what you know</h3>
+        <p data-i18n="b8P"></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label" data-i18n="sec2Label">The curriculum</div>
+    <h2 data-i18n="sec2H">Five tenses that carry 95% of conversation</h2>
+    <p class="sec-sub" data-i18n="sec2Sub"></p>
+    <div class="tenses">
+      <div class="tense"><div class="t-name">Presente</div><div class="t-desc" data-i18n="t1"></div><div class="t-forms">hablo · comes · vive</div></div>
+      <div class="tense"><div class="t-name">Indefinido</div><div class="t-desc" data-i18n="t2"></div><div class="t-forms">hablé · comiste · vivió</div></div>
+      <div class="tense"><div class="t-name">Imperfecto</div><div class="t-desc" data-i18n="t3"></div><div class="t-forms">hablaba · comías · vivíamos</div></div>
+      <div class="tense"><div class="t-name">Futuro</div><div class="t-desc" data-i18n="t4"></div><div class="t-forms">hablaré · comerás · vivirán</div></div>
+      <div class="tense"><div class="t-name">Perfecto</div><div class="t-desc" data-i18n="t5"></div><div class="t-forms">he hablado · has comido</div></div>
+    </div>
+  </section>
+
+  <div class="final">
+    <div class="accent-big a1">é</div>
+    <div class="accent-big a2">ñ</div>
+    <h2 data-i18n="finalH">Start conjugating like it's nothing.</h2>
+    <p data-i18n="finalP"></p>
+    <a class="store-badge" href="#" aria-label="Download on the App Store">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.79.06 2.26-.8 3.81-.68 1.3.11 2.28.59 2.98 1.51-2.67 1.63-2.24 5.19.34 6.32-.53 1.66-1.24 3.29-2.21 5.02zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+      <span class="lines"><span class="small" data-i18n="badgeSmall2">Download on the</span><span class="big">App Store</span></span>
+    </a>
+    <div class="under">$2.99 · iPhone · iOS 17+</div>
+  </div>
+
+  <footer>
+    <div>© 2026 Elena Krasnoperova · Alicante, Spain</div>
+    <div><a href="https://elenred.github.io/tiempos-privacy/" data-i18n="footPrivacy">Privacy</a> · <a href="mailto:alena.tomsk@gmail.com" data-i18n="footContact">Contact</a></div>
+  </footer>
+</div>
+
+<script>
+  // ── i18n ──
+  const I18N = {
+    en: {
+      navCta: "Get the app",
+      eyebrow: "Spanish verb trainer for iPhone",
+      heroSub: "Master Spanish verb tenses the way they actually stick: read a <strong>short, clear rule</strong>, then drill it on the <strong>1,000 most-used verbs</strong> — with instant, accent-aware feedback.",
+      badgeSmall: "Download on the", badgeSmall2: "Download on the",
+      priceNote: "<b>$2.99</b> once. No subscription.<br>No ads. Works offline.",
+      tryHint: "This is the real thing — try a verb",
+      sec1Label: "Why it works",
+      sec1H: "Rule first. Then a hundred reps.",
+      sec1Sub: "Apps that only quiz you never explain anything; grammar books never make you practice. Tiempos does both, in that order — and gets out of your way.",
+      b1H: "Most-used Spanish verbs",
+      b1P: "Ranked by real frequency from millions of subtitles, so the verbs you drill are the verbs people actually say. Frequent verbs come up more often — rare ones won't drown out ser and tener.",
+      b2H: "Irregular-verb patterns",
+      b2P: "Irregulars aren't chaos — they rhyme. Tiempos names the pattern of the verb in front of you and shows its siblings.",
+      chipStrong: "strong preterite · tuve",
+      b3H: "Time markers teach timing",
+      b3P: "Words like <i>ayer</i>, <i>mañana</i>, <i>todavía no</i> signal which tense a native would use. Every exercise carries one — so you learn <b>when</b>, not just <b>how</b>.",
+      b4H: "Every answer becomes a sentence",
+      b4P: "Get it right and your form appears in living Spanish, built around that same marker.",
+      b5H: "Accent-aware checking",
+      b5P: "<i>hablo</i> vs <i>habló</i> is a different person and a different day. Miss only the accent and Tiempos says “almost” — and shows exactly where it goes. One-tap keys: á é í ó ú ñ.",
+      b6H: "Yours, fully",
+      b6P: "Pay once. Works offline on a plane. No account, no ads, no tracking — your streak is nobody's business.",
+      b7P: "Rules and translations in both languages — switch anytime.",
+      b8H: "Hide what you know",
+      b8P: "Rule cards and endings tables collapse away as you memorize them — per tense, remembered forever.",
+      sec2Label: "The curriculum",
+      sec2H: "Five tenses that carry 95% of conversation",
+      sec2Sub: "From first words to real fluency — the indicative core, A1 to B1.",
+      t1: "habits & now", t2: "finished past", t3: "past background", t4: "plans & guesses", t5: "past that matters now",
+      finalH: "Start conjugating like it's nothing.",
+      finalP: "One coffee's worth. A lifetime of correctly placed accents. 1,000 verbs, five tenses, zero subscriptions.",
+      footPrivacy: "Privacy", footContact: "Contact",
+      tabRegular: "By the rule", tabIrregular: "Irregular",
+      placeholder: "Type the verb form…", check: "Check", next: "Next",
+      perfect: "¡Perfecto!", almost: "Almost — watch the accent:", wrong: "Not quite. It's",
+      streak: "in a row",
+    },
+    ru: {
+      navCta: "Скачать",
+      eyebrow: "Тренажёр испанских глаголов для iPhone",
+      heroSub: "Осваивайте испанские времена так, чтобы они оставались в голове: <strong>короткое понятное правило</strong> — и отработка на <strong>1000 самых употребительных глаголах</strong> с мгновенной проверкой ударений.",
+      badgeSmall: "Загрузите в", badgeSmall2: "Загрузите в",
+      priceNote: "<b>$2.99</b> один раз. Без подписки.<br>Без рекламы. Работает офлайн.",
+      tryHint: "Это настоящий тренажёр — попробуйте",
+      sec1Label: "Почему это работает",
+      sec1H: "Сначала правило. Потом сто повторений.",
+      sec1Sub: "Приложения-викторины ничего не объясняют; учебники грамматики не заставляют практиковаться. Tiempos делает и то и другое — именно в этом порядке — и не мешает заниматься.",
+      b1H: "Самых употребительных глаголов",
+      b1P: "Отранжированы по реальной частотности из миллионов субтитров: вы отрабатываете глаголы, которые люди действительно говорят. Частые попадаются чаще — редкие не заслонят ser и tener.",
+      b2H: "Паттернов неправильных глаголов",
+      b2P: "Неправильные глаголы — не хаос, они рифмуются. Tiempos называет паттерн глагола перед вами и показывает его «собратьев».",
+      chipStrong: "сильный претерит · tuve",
+      b3H: "Маркеры времени учат выбирать время",
+      b3P: "Слова вроде <i>ayer</i>, <i>mañana</i>, <i>todavía no</i> подсказывают, какое время употребит носитель. Они есть в каждом упражнении — вы учите не только <b>как</b>, но и <b>когда</b>.",
+      b4H: "Каждый ответ становится предложением",
+      b4P: "Ответили верно — и ваша форма оживает в испанской фразе, построенной вокруг того же маркера.",
+      b5H: "Проверка с умными ударениями",
+      b5P: "<i>hablo</i> и <i>habló</i> — разные лица и разные дни. Ошиблись только в ударении — Tiempos скажет «почти» и покажет, где оно стоит. Кнопки в один тап: á é í ó ú ñ.",
+      b6H: "Полностью ваше",
+      b6P: "Платите один раз. Работает офлайн в самолёте. Без аккаунтов, рекламы и трекинга — ваша серия никого не касается.",
+      b7P: "Правила и переводы на обоих языках — переключайтесь в любой момент.",
+      b8H: "Скрывайте выученное",
+      b8P: "Карточки правил и таблицы окончаний сворачиваются, когда вы их запомнили, — отдельно для каждого времени, навсегда.",
+      sec2Label: "Программа",
+      sec2H: "Пять времён, на которых держится 95% речи",
+      sec2Sub: "От первых слов до уверенной беседы — ядро изъявительного наклонения, A1–B1.",
+      t1: "привычки и сейчас", t2: "завершённое прошлое", t3: "фон в прошлом", t4: "планы и догадки", t5: "прошлое, важное сейчас",
+      finalH: "Спрягайте так, будто это легко.",
+      finalP: "Цена одной чашки кофе — и ударения навсегда на своих местах. 1000 глаголов, пять времён, ноль подписок.",
+      footPrivacy: "Конфиденциальность", footContact: "Написать",
+      tabRegular: "По правилу", tabIrregular: "Неправильные",
+      placeholder: "Введи форму глагола…", check: "Проверить", next: "Дальше",
+      perfect: "¡Perfecto!", almost: "Почти! Следи за ударением:", wrong: "Неверно. Правильно:",
+      streak: "подряд",
+    },
+  };
+
+  let lang = (localStorage.getItem("tiempos-lang")) || (navigator.language && navigator.language.startsWith("ru") ? "ru" : "en");
+
+  function applyLang() {
+    const d = I18N[lang];
+    document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = d[el.dataset.i18n] ?? el.textContent; });
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = d[el.dataset.i18nHtml] ?? el.innerHTML; });
+    document.getElementById("tab-regular").textContent = d.tabRegular;
+    document.getElementById("tab-irregular").textContent = d.tabIrregular;
+    document.getElementById("demo-input").placeholder = d.placeholder;
+    document.getElementById("lang-ru").classList.toggle("on", lang === "ru");
+    document.getElementById("lang-en").classList.toggle("on", lang === "en");
+    document.documentElement.lang = lang;
+    refreshDemoTexts();
+  }
+  document.getElementById("lang-ru").addEventListener("click", () => { lang = "ru"; localStorage.setItem("tiempos-lang", "ru"); applyLang(); });
+  document.getElementById("lang-en").addEventListener("click", () => { lang = "en"; localStorage.setItem("tiempos-lang", "en"); applyLang(); });
+
+  // marquee seamless loop
+  const track = document.getElementById("marquee-track");
+  track.innerHTML += track.innerHTML;
+
+  // ── mini trainer: Presente, regular vs irregular — exactly like the app ──
+  // [infinitive, ru, en, forms[6], patternKey|null]
+  const POOLS = {
+    regular: [
+      ["hablar","говорить","to speak",["hablo","hablas","habla","hablamos","habláis","hablan"],null],
+      ["comer","есть","to eat",["como","comes","come","comemos","coméis","comen"],null],
+      ["vivir","жить","to live",["vivo","vives","vive","vivimos","vivís","viven"],null],
+      ["comprar","покупать","to buy",["compro","compras","compra","compramos","compráis","compran"],null],
+      ["trabajar","работать","to work",["trabajo","trabajas","trabaja","trabajamos","trabajáis","trabajan"],null],
+      ["escuchar","слушать","to listen",["escucho","escuchas","escucha","escuchamos","escucháis","escuchan"],null],
+    ],
+    irregular: [
+      ["tener","иметь","to have",["tengo","tienes","tiene","tenemos","tenéis","tienen"],"go_ie"],
+      ["poder","мочь","to be able to",["puedo","puedes","puede","podemos","podéis","pueden"],"o_ue"],
+      ["pensar","думать","to think",["pienso","piensas","piensa","pensamos","pensáis","piensan"],"e_ie"],
+      ["hacer","делать","to do",["hago","haces","hace","hacemos","hacéis","hacen"],"go"],
+      ["ir","идти","to go",["voy","vas","va","vamos","vais","van"],"unique"],
+      ["pedir","просить","to ask for",["pido","pides","pide","pedimos","pedís","piden"],"e_i"],
+      ["conocer","знать, быть знакомым","to know",["conozco","conoces","conoce","conocemos","conocéis","conocen"],"zc"],
+      ["querer","хотеть","to want",["quiero","quieres","quiere","queremos","queréis","quieren"],"e_ie"],
+    ],
+  };
+  const MARKERS = ["cada día","ahora","normalmente","siempre","todos los días"];
+  const COMPLEMENTS = { hablar:"con Ana", comer:"en casa", vivir:"en Madrid", comprar:"pan", trabajar:"mucho",
+    escuchar:"música", tener:"mucho trabajo", poder:"descansar", pensar:"en el futuro", hacer:"la cena",
+    ir:"al cine", pedir:"un café", conocer:"a María", querer:"ayudar" };
+  const PRONOUNS = ["yo","tú","él / ella","nosotros/as","vosotros/as","ellos / ellas"];
+
+  let mode = "regular", current = null, streak = 0, answered = false;
+  const $ = (id) => document.getElementById(id);
+  const strip = (s) => s.replace(/[áéíóúü]/g, (c) => ({"á":"a","é":"e","í":"i","ó":"o","ú":"u","ü":"u"}[c]));
+
+  function next() {
+    const pool = POOLS[mode];
+    let v, p;
+    do { v = pool[Math.floor(Math.random()*pool.length)]; p = Math.floor(Math.random()*6); }
+    while (current && current.v === v && current.p === p);
+    current = { v, p, m: MARKERS[Math.floor(Math.random()*MARKERS.length)], answer: v[3][p] };
+    answered = false;
+    $("demo-marker").textContent = current.m;
+    $("demo-verb").textContent = v[0];
+    $("demo-pron").textContent = PRONOUNS[p];
+    const inp = $("demo-input");
+    inp.value = ""; inp.className = "demo-input"; inp.disabled = false;
+    $("demo-check").disabled = true;
+    $("demo-feedback").innerHTML = "";
+    refreshDemoTexts();
+  }
+
+  function refreshDemoTexts() {
+    if (!current) return;
+    const d = I18N[lang];
+    $("demo-tr").textContent = lang === "ru" ? current.v[1] : current.v[2];
+    $("demo-check").textContent = answered ? d.next : d.check;
+    $("demo-streak").textContent = `🔥 ${streak} ${d.streak}`;
+  }
+
+  function check() {
+    const d = I18N[lang];
+    const inp = $("demo-input");
+    const given = inp.value.trim().toLowerCase();
+    if (!given) return;
+    const want = current.answer;
+    const cap = current.m[0].toUpperCase() + current.m.slice(1);
+    const comp = COMPLEMENTS[current.v[0]] || "";
+    const sentence = `${cap} ${want}${comp ? " " + comp : ""}.`;
+    const fb = $("demo-feedback");
+    answered = true;
+    inp.disabled = true;
+    if (given === want) {
+      streak++;
+      inp.className = "demo-input ok";
+      fb.innerHTML = `<span class="good">${d.perfect}</span><br><span class="example">«${sentence}»</span>`;
+    } else if (strip(given) === strip(want)) {
+      streak++;
+      inp.className = "demo-input ok";
+      fb.innerHTML = `<span class="good">${d.almost} <u>${want}</u></span><br><span class="example">«${sentence}»</span>`;
+    } else {
+      streak = 0;
+      inp.className = "demo-input bad";
+      fb.innerHTML = `<span class="bad-t">${d.wrong} <u>${want}</u></span>`;
+    }
+    $("demo-check").disabled = false;
+    refreshDemoTexts();
+  }
+
+  $("demo-input").addEventListener("input", () => { if (!answered) $("demo-check").disabled = !$("demo-input").value.trim(); });
+  $("demo-input").addEventListener("keydown", (e) => { if (e.key === "Enter") { answered ? next() : check(); } });
+  $("demo-check").addEventListener("click", () => { answered ? next() : check(); });
+  $("demo-accents").addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON" || answered) return;
+    const inp = $("demo-input");
+    const s = inp.selectionStart ?? inp.value.length;
+    inp.value = inp.value.slice(0, s) + e.target.textContent + inp.value.slice(inp.selectionEnd ?? s);
+    inp.focus(); inp.setSelectionRange(s + 1, s + 1);
+    inp.dispatchEvent(new Event("input"));
+  });
+  document.querySelectorAll(".demo-tab").forEach((b) => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".demo-tab").forEach((x) => x.classList.remove("on"));
+      b.classList.add("on");
+      mode = b.dataset.mode;
+      streak = 0;
+      next();
+    });
+  });
+
+  next();
+  applyLang();
+</script>
+</body>
+</html>
