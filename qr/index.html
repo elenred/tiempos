@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiempos — QR</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%235E8153'/><text x='50' y='72' font-size='64' text-anchor='middle' font-family='Georgia,serif' font-weight='bold' fill='%23F6F1E7'>é</text></svg>">
+<style>
+  :root {
+    --bg: #F6F1E7; --card: #FFFFFF; --ink: #2B2721; --ink-soft: #7d7466;
+    --sage: #5E8153; --line: #E3DAC8;
+    --shadow: 0 24px 60px -24px rgba(58, 52, 39, 0.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #211E18; --card: #2E2A22; --ink: #F0EADC; --ink-soft: #A89F8D;
+      --sage: #93B285; --line: #3C372D;
+      --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding: 32px; text-align: center;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 19px; letter-spacing: -0.2px; color: inherit; text-decoration: none; }
+  .logo-mark {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(180deg, #F8F4EB, #EFE8D8);
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-family: Georgia, serif; font-weight: 700; font-size: 24px; color: #5E8153;
+  }
+  .qr {
+    width: min(280px, 70vw); height: auto; display: block;
+    color: #2B2721; background: #FFFCF5;
+    border: 1px solid var(--line); border-radius: 24px;
+    box-shadow: var(--shadow);
+  }
+  p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
+  p b { color: var(--ink); font-weight: 600; }
+  a.fallback { color: var(--sage); text-decoration: none; font-size: 15px; }
+  a.fallback:hover { text-decoration: underline; }
+  @media (prefers-reduced-motion: no-preference) {
+    body > * { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+    body > *:nth-child(2) { animation-delay: 0.12s; }
+    body > *:nth-child(3) { animation-delay: 0.24s; }
+    body > *:nth-child(4) { animation-delay: 0.34s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+  <a class="logo" href="/"><span class="logo-mark">é</span>Tiempos</a>
+  <svg class="qr" viewBox="0 0 41 41" shape-rendering="crispEdges" role="img" aria-label="QR"><path stroke="currentColor" d="M4 4.5h7m2 0h4m3 0h6m1 0h1m2 0h7M4 5.5h1m5 0h1m3 0h2m3 0h4m1 0h3m1 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h2m1 0h7m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h5m4 0h3m2 0h3m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h6m1 0h3m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m3 0h1m6 0h1m2 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m1 0h2m1 0h1m1 0h1m4 0h3M4 12.5h1m1 0h5m5 0h3m2 0h2m3 0h1m1 0h1m1 0h5M5 13.5h1m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1m1 0h7m1 0h2m1 0h4M6 14.5h2m1 0h4m1 0h1m1 0h4m1 0h1m2 0h1m4 0h2m1 0h1m1 0h2M9 15.5h1m1 0h3m1 0h3m1 0h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h5M5 16.5h2m1 0h3m2 0h2m3 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h2M5 17.5h4m3 0h1m2 0h3m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m3 0h3M6 18.5h2m1 0h2m3 0h1m1 0h2m1 0h3m3 0h1m3 0h2m2 0h1m1 0h1M4 19.5h4m3 0h1m2 0h1m2 0h3m4 0h2m3 0h3m2 0h1M5 20.5h1m2 0h5m3 0h1m1 0h4m4 0h2m1 0h1m1 0h2m3 0h1M5 21.5h2m2 0h1m3 0h3m1 0h1m2 0h1m1 0h6m2 0h2m1 0h2m1 0h1M7 22.5h1m1 0h3m1 0h1m1 0h2m1 0h3m7 0h1m1 0h3m1 0h2M4 23.5h2m1 0h2m4 0h2m1 0h1m3 0h6m2 0h2m1 0h4M4 24.5h2m1 0h1m1 0h2m1 0h2m4 0h1m4 0h1m2 0h1m1 0h2m1 0h3M4 25.5h2m3 0h1m4 0h2m3 0h2m1 0h9m2 0h1m2 0h1M4 26.5h1m3 0h4m1 0h2m1 0h2m4 0h1m1 0h2m2 0h1m2 0h1m1 0h3M4 27.5h1m1 0h1m1 0h1m2 0h1m2 0h1m2 0h1m2 0h1m4 0h1m2 0h2m1 0h1m1 0h4M4 28.5h1m1 0h8m4 0h1m2 0h1m1 0h1m2 0h8M12 29.5h1m1 0h2m5 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h3M4 30.5h7m2 0h1m1 0h5m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2M4 31.5h1m5 0h1m1 0h1m1 0h3m1 0h2m1 0h1m2 0h5m3 0h4M4 32.5h1m1 0h3m1 0h1m1 0h3m2 0h3m1 0h1m6 0h6m1 0h2M4 33.5h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h2m3 0h2m3 0h2m2 0h1m1 0h3M4 34.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h4m1 0h1M4 35.5h1m5 0h1m2 0h2m1 0h3m1 0h1m1 0h4m6 0h3M4 36.5h7m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m2 0h6m1 0h1m1 0h1"/></svg>
+  <p data-t="hint">Наведите камеру iPhone на код — откроется страница в App&nbsp;Store.</p>
+  <a class="fallback" href="https://apps.apple.com/app/tiempos-spanish-verbs/id6790191597" data-t="fallback">Или откройте App Store в браузере</a>
+<script>
+  const T = {
+    en: { hint: "Point your iPhone camera at the code — the App Store page will open.", fallback: "Or open the App Store in your browser" },
+    ru: { hint: "Наведите камеру iPhone на код — откроется страница в App Store.", fallback: "Или откройте App Store в браузере" },
+  };
+  const lang = localStorage.getItem("tiempos-lang") || (navigator.language && navigator.language.startsWith("ru") ? "ru" : "en");
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = T[lang][el.dataset.t]; });
+</script>
+</body>
+</html>

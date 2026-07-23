@@ -310,7 +310,7 @@
         <button id="lang-ru" type="button">RU</button>
         <button id="lang-en" type="button">EN</button>
       </div>
-      <a class="nav-cta" href="#get" data-i18n="navCta">Get the app</a>
+      <a class="nav-cta" href="https://apps.apple.com/app/tiempos-spanish-verbs/id6790191597" data-i18n="navCta">Get the app</a>
     </div>
   </nav>
 
@@ -664,6 +664,13 @@
 
   next();
   applyLang();
+
+  // ── nav CTA: QR page on desktop, App Store on mobile ──
+  const desktopMQ = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 901px)");
+  const navCta = document.querySelector(".nav-cta");
+  const updateNavCta = () => { navCta.href = desktopMQ.matches ? "/qr/" : "https://apps.apple.com/app/tiempos-spanish-verbs/id6790191597"; };
+  desktopMQ.addEventListener("change", updateNavCta);
+  updateNavCta();
 </script>
 </body>
 </html>
